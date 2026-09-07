@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script type="module" src="./src/bejegyzesKezeles.ts"></script>
-    <table id="tabla"></table>;
+
+    <form id="hangulatForm">
+        <h2>Hogyan érzed magad?</h2>
+
+        <div>
+            <label><input type="radio" name="hangulat" value="boldog" required> 😀</label>
+            <label><input type="radio" name="hangulat" value="semleges"> 😐</label>
+            <label><input type="radio" name="hangulat" value="szomoru"> 😢</label>
+            <label><input type="radio" name="hangulat" value="faradt"> 😴</label>
+            <label><input type="radio" name="hangulat" value="merges"> 😡</label>
+        </div>
+
+        <div>
+            <label for="leiras"><strong>Szöveges leírás</strong></label><br>
+            <textarea id="leiras" name="leiras" placeholder="Írd le, hogyan érzed magad..."></textarea>
+        </div>
+            <label for="datum"><strong>Datum</strong></label><br>
+            <input name="datum" type="datetime-local">
+        <div>
+
+        </div>
+
+        <button type="submit">Mentés</button>
+    </form>
+
+    <table id="tabla"></table>
 </body>
+
 </html>

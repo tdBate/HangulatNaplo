@@ -5,6 +5,7 @@ import "./style.css";
 const URL_LINK = import.meta.env.VITE_URL_LINK;
 
 let data: Hangulat[];
+let currentID:number;
 
 async function torles(id: number) {
     const response= await fetch(`${URL_LINK}/${id}`, {
@@ -18,8 +19,42 @@ async function torles(id: number) {
     
 }
 
-async function modosit(id: number) {
+async function modosit(item:Hangulat) {
+    currentID = item.id;
+    const form: HTMLFormElement = document.getElementById("hangulatForm") as HTMLFormElement;
+    const formData = new FormData(form);
 
+    (form.elements.namedItem("hangulat") as HTMLFormElement).value = item.hangulat;
+    (form.elements.namedItem("leiras") as HTMLFormElement).value = item.leiras;
+    (form.elements.namedItem("datum") as HTMLFormElement).value = new Date(item.datum).toISOString().slice(0,16);
+}
+
+async function modositPatch(e:Event) {
+    e.preventDefault();
+    const form: HTMLFormElement = document.getElementById("hangulatForm") as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const hangulat = formData.get("hangulat");
+    const leiras = formData.get("leiras");
+
+    const datum = formData.get("datum");
+
+    const response = await fetch(`${URL_LINK}/${currentID}`,
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify({ hangulat:hangulat, leiras:leiras, datum:datum})
+        })
+    
+
+    if (!response.ok) {throw new Error("Módosítás nem sikerült "+response.status);}
+    else {alert("Módosítás sikeres!");}
+
+    form.reset();
+    loadData();
+    
 }
 
 function printData() {
@@ -40,20 +75,25 @@ function printData() {
             datum.textContent = element.datum.toString() || "N/A";
         } catch (err) { datum.textContent = "N/A" }
 
+        const torlesCella = document.createElement("td");
         const torlesBtn = document.createElement("button");
         torlesBtn.textContent = "Törlés";
         torlesBtn.onclick = () => { torles(element.id) }
+        torlesCella.appendChild(torlesBtn);
 
+        const modositCella = document.createElement("td");
         const modositButton = document.createElement("button");
         modositButton.textContent = "Módosít";
         modositButton.onclick = () => {
-            modosit(element.id);
+            modosit(element);
         }
+        modositCella.appendChild(modositButton);
 
         row.appendChild(hangulat);
         row.appendChild(leiras);
         row.appendChild(datum);
-        row.appendChild(torlesBtn);
+        row.appendChild(torlesCella);
+        row.appendChild(modositCella);
 
         tabla.appendChild(row);
     });
@@ -68,6 +108,7 @@ async function loadData() {
 
 function init() {
     loadData();
+    document.getElementById("hangulatForm")?.addEventListener("submit", modositPatch);
 }
 
 document.addEventListener("DOMContentLoaded", init);
