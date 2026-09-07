@@ -8,6 +8,7 @@ let data: Hangulat[];
 let currentID:number;
 
 async function torles(id: number) {
+    if (!confirm("Biztos törötlni akarod?")) {return;}
     const response= await fetch(`${URL_LINK}/${id}`, {
         method: 'DELETE'
     });
