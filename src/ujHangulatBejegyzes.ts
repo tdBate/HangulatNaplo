@@ -8,6 +8,7 @@ async function formKezeles(e: Event) {
     const hangulat = formData.get("hangulat");
     const leiras = formData.get("leiras");
 
+    const datum = new Date();
 
     const response = await fetch(import.meta.env.VITE_URL_LINK,
         {
@@ -15,10 +16,11 @@ async function formKezeles(e: Event) {
                 'Content-Type': 'application/json'
             },
             method: "POST",
-            body: JSON.stringify({ hangulat:hangulat, leiras:leiras})
+            body: JSON.stringify({ hangulat:hangulat, leiras:leiras, datum:datum})
         })
     
-    if (!response.ok) {throw new Error("Feltöltés nem sikerült "+response.statusText)}
+    if (!response.ok) {throw new Error("Feltöltés nem sikerült "+response.statusText);}
+    else {alert("Feltöltés sikeres!");}
 
     form.reset();
 }
