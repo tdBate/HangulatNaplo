@@ -1,5 +1,7 @@
 import type { Hangulat } from "./Hangulat";
 import "./style.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
 const URL_LINK = import.meta.env.VITE_URL_LINK;

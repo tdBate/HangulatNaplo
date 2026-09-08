@@ -10,6 +10,24 @@
 <body>
     <script type="module" src="./src/bejegyzesKezeles.ts"></script>
 
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+  <div class="container-fluid">
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/ujHangulatBejegyzes">Hangulat bejegyzés</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/bejegyzesKezeles.html">Hangulat kezelés</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/statisztika.html">Statisztika</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
     <form id="hangulatForm">
         <h2>Hogyan érzed magad?</h2>
 
@@ -25,8 +43,8 @@
             <label for="leiras"><strong>Szöveges leírás</strong></label><br>
             <textarea id="leiras" name="leiras" placeholder="Írd le, hogyan érzed magad..."></textarea>
         </div>
-            <label for="datum"><strong>Datum</strong></label><br>
-            <input name="datum" type="datetime-local">
+        <label for="datum"><strong>Datum</strong></label><br>
+        <input name="datum" type="datetime-local">
         <div>
 
         </div>
