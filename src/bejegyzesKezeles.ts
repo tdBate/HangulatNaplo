@@ -75,9 +75,7 @@ function printData() {
         leiras.textContent = element.leiras;
 
         const datum = document.createElement("td");
-        try {
-            datum.textContent = element.datum.toString() || "N/A";
-        } catch (err) { datum.textContent = "N/A" }
+        datum.textContent = new Date(element.datum).toLocaleDateString() || "N/A";
 
         const torlesCella = document.createElement("td");
         const torlesBtn = document.createElement("button");
