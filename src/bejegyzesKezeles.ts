@@ -62,6 +62,7 @@ async function modositPatch(e:Event) {
 
 function printData() {
     const tabla: HTMLTableElement = document.getElementById("tabla") as HTMLTableElement;
+    tabla.className = "table mt-4"
     tabla.innerHTML = `<tr> <th>Hangulat</th>  <th>Leírás</th>  <th>Dátum</th>  <th>Törlés</th>  <th>Módosítás</th> </tr>`;
 
     data.forEach(element => {
@@ -80,12 +81,14 @@ function printData() {
 
         const torlesCella = document.createElement("td");
         const torlesBtn = document.createElement("button");
+        torlesBtn.className = "btn btn-danger";
         torlesBtn.textContent = "Törlés";
         torlesBtn.onclick = () => { torles(element.id) }
         torlesCella.appendChild(torlesBtn);
 
         const modositCella = document.createElement("td");
         const modositButton = document.createElement("button");
+        modositButton.className = "btn btn-primary"
         modositButton.textContent = "Módosít";
         modositButton.onclick = () => {
             modosit(element);

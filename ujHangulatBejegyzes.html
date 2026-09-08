@@ -12,44 +12,51 @@
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-  <div class="container-fluid">
-    <!-- Links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/ujHangulatBejegyzes">Hangulat bejegyzés</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/bejegyzesKezeles.html">Hangulat kezelés</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/statisztika.html">Statisztika</a>
-      </li>
-    </ul>
+    <div class="container-fluid">
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/ujHangulatBejegyzes">Hangulat bejegyzés</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/bejegyzesKezeles.html">Hangulat kezelés</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/statisztika.html">Statisztika</a>
+        </li>
+      </ul>
+    </div>
+
+  </nav>
+
+  <h1 class="text-center">Hangulatnapló</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <form class="form" id="hangulatForm">
+          <h2>Új bejegyzés:</h2>
+          <h3>Hogyan érzed magad?</h3>
+
+          <div>
+            <label class="form-label"><input type="radio" name="hangulat" value="boldog" required> 😀</label>
+            <label class="form-label"><input type="radio" name="hangulat" value="semleges"> 😐</label>
+            <label class="form-label"><input type="radio" name="hangulat" value="szomoru"> 😢</label>
+            <label class="form-label"><input type="radio" name="hangulat" value="faradt"> 😴</label>
+            <label class="form-label"><input type="radio" name="hangulat" value="merges"> 😡</label>
+          </div>
+
+          <div>
+            <label class="form-label" for="leiras"><strong>Szöveges leírás</strong></label><br>
+            <textarea class="form-control" id="leiras" name="leiras" placeholder="Írd le, hogyan érzed magad..."></textarea>
+          </div>
+
+          <button class="btn btn-success" type="submit">Mentés</button>
+        </form>
+      </div>
+    </div>
   </div>
 
-</nav>
-
-  <h1>Hangulatnapló</h1>
-  <h2>Új bejegyzés</h2>
-
-  <form id="hangulatForm">
-      <h2>Hogyan érzed magad?</h2>
-
-      <div>
-        <label><input type="radio" name="hangulat" value="boldog" required> 😀</label>
-        <label><input type="radio" name="hangulat" value="semleges"> 😐</label>
-        <label><input type="radio" name="hangulat" value="szomoru"> 😢</label>
-        <label><input type="radio" name="hangulat" value="faradt"> 😴</label>
-        <label><input type="radio" name="hangulat" value="merges"> 😡</label>
-      </div>
-
-      <div>
-        <label for="leiras"><strong>Szöveges leírás</strong></label><br>
-        <textarea id="leiras" name="leiras" placeholder="Írd le, hogyan érzed magad..."></textarea>
-      </div>
-
-      <button type="submit">Mentés</button>
-  </form>
 </body>
 
 </html>
